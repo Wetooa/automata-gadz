@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Automata Visualizer
 
-## Getting Started
+Welcome to the **Automata Visualizer**, an interactive sandbox designed to help students and enthusiasts explore the fascinating world of formal languages and automata theory. Whether you're learning about regular expressions, finite automata, or Turing machines, this tool empowers you to visualize and experiment with key concepts, making complex topics more intuitive and engaging.
 
-First, run the development server:
+## 🎯 Purpose
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This project aims to:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Enhance the learning experience for students of formal languages and automata theory.
+2. Provide upcoming 3rd-year students of Cebu Institute of Technology University with a hands-on tool to complement their coursework.
+3. Serve as a personal challenge to improve my software development skills and contribute to open-source learning tools.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Midterm Topics
 
-## Learn More
+- **Regular Expressions (Regex):** Build and visualize regex patterns, test strings, and see how they are matched.
+- **Deterministic Finite Automata (DFA):** Create DFAs and watch them process input strings step-by-step.
+- **Nondeterministic Finite Automata (NFA):** Experiment with NFAs and understand how they differ from DFAs.
 
-To learn more about Next.js, take a look at the following resources:
+### Finals Topics
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Context-Free Grammars (CFG):** Define grammars, generate strings, and parse inputs.
+- **Pushdown Automata (PDA):** Visualize PDAs and their stack-based operations.
+- **Turing Machines:** Design Turing machines, simulate computations, and explore the limits of computability.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### General Features
 
-## Deploy on Vercel
+- **Interactive Sandbox:** Drag-and-drop interface for building automata and grammars.
+- **Step-by-Step Simulation:** Visualize the processing of inputs at every step.
+- **Debugging Tools:** Identify errors in automata, grammars, and expressions.
+- **Educational Insights:** Inline explanations and tips to reinforce understanding.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Frontend:** [React.js/Next.js](https://nextjs.org/) for a modern and responsive user interface.
+- **Backend:** Node.js or Python for processing automata and grammars.
+- **Visualization:** D3.js or Canvas API for interactive diagrams.
+- **Testing Frameworks:** Jest or Mocha for unit and integration testing.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js and npm installed
+- A web browser (latest version recommended)
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/automata-visualizer.git
+   cd automata-visualizer
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser and navigate to:
+
+   ```
+   http://localhost:3000
+   ```
+
+## 📖 Usage
+
+1. Select a topic (e.g., DFA, NFA, PDA, etc.).
+2. Use the tools to create or load an automaton, grammar, or expression.
+3. Input test strings or data and watch the visualizer process them.
+4. Explore, debug, and learn!
+
+## 🤝 Contributing
+
+Contributions are welcome! Here's how you can help:
+
+1. Fork the repository and clone it.
+2. Create a new branch:
+
+   ```bash
+   git checkout -b feature-name
+   ```
+
+3. Make your changes and test thoroughly.
+4. Push to your branch and submit a pull request.
+
+## 🌟 Feedback and Support
+
+Your feedback is invaluable! If you encounter issues, have suggestions, or want to share your thoughts, please open an issue or contact me via [email@example.com](mailto:email@example.com).
+
+## 📜 License
+
+This project is licensed under the MIT License. Feel free to use, modify, and distribute it as you wish.
+
+## 💡 Inspiration
+
+This project was inspired by my desire to give back to the academic community and to provide students with a hands-on way to explore and understand automata theory. Let's make learning fun and interactive together!
+
+---
+
+Thank you for checking out Automata Visualizer. If you find this project helpful, please give it a ⭐ on GitHub and share it with others!
