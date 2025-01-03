@@ -6,13 +6,16 @@ import {
 } from "@/components/ui/sidebar";
 import {
   Home,
-  Inbox,
-  Calendar,
   Search,
   Settings,
   Regex,
   LucideIcon,
   Languages,
+  CassetteTape,
+  Workflow,
+  TrendingUpDownIcon,
+  Network,
+  Layers,
 } from "lucide-react";
 import AppSidebarGroup from "./app-sidebar-group";
 
@@ -29,18 +32,18 @@ const items: SidebarItemProps[] = [
     icon: Home,
   },
   {
-    title: "Lanaguage Generator",
+    title: "Language Generator",
     url: "/language",
     icon: Languages,
   },
   {
     title: "Search",
-    url: "#",
+    url: "/search",
     icon: Search,
   },
   {
     title: "Settings",
-    url: "#",
+    url: "/settings",
     icon: Settings,
   },
 ];
@@ -48,28 +51,39 @@ const items: SidebarItemProps[] = [
 const midtermLessons: SidebarItemProps[] = [
   {
     title: "Regex",
-    url: "regex",
+    url: "/regex",
     icon: Regex,
   },
 
   {
     title: "DFA",
-    url: "dfa",
-    icon: Regex,
+    url: "/dfa",
+    icon: TrendingUpDownIcon,
   },
 
   {
     title: "NFA",
-    url: "nfa",
-    icon: Regex,
+    url: "/nfa",
+    icon: Workflow,
   },
 ];
 
 const finalsLessons: SidebarItemProps[] = [
   {
+    title: "CFG",
+    url: "/cfg",
+    icon: Network,
+  },
+  {
+    title: "PDA",
+    url: "/pda",
+    icon: Layers,
+  },
+
+  {
     title: "Turing",
-    url: "regex",
-    icon: Regex,
+    url: "/turing",
+    icon: CassetteTape,
   },
 ];
 
