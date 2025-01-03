@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useCallback } from "react";
 import {
   ReactFlow,
@@ -14,6 +15,7 @@ import {
 
 import "@xyflow/react/dist/style.css";
 import ButtonEdge from "./ButtonEdge";
+import { useTheme } from "next-themes";
 
 const initialNodes = [
   {
@@ -213,6 +215,7 @@ const nodeClassName = (node) => node.type;
 // const initialEdges = [{ id: "e1-2", source: "1", target: "2" }];
 
 export default function App() {
+  const { theme } = useTheme();
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
@@ -231,6 +234,7 @@ export default function App() {
         nodeTypes={nodeTypes}
         edgeTypes={edgeTypes}
         onConnect={onConnect}
+        colorMode={theme}
         fitView
       >
         <MiniMap zoomable pannable nodeClassName={nodeClassName} />
