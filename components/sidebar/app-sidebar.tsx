@@ -5,18 +5,19 @@ import {
   SidebarHeader,
 } from "@/components/ui/sidebar";
 import {
+  CassetteTape,
   Home,
+  Languages,
+  Layers,
+  LucideIcon,
+  Network,
+  Regex,
   Search,
   Settings,
-  Regex,
-  LucideIcon,
-  Languages,
-  CassetteTape,
-  Workflow,
   TrendingUpDownIcon,
-  Network,
-  Layers,
+  Workflow,
 } from "lucide-react";
+import AppSidebarFooter from "./app-sidebar-footer";
 import AppSidebarGroup from "./app-sidebar-group";
 
 export interface SidebarItemProps {
@@ -96,7 +97,9 @@ export function AppSidebar() {
         <AppSidebarGroup label="Midterm Lessons" content={midtermLessons} />
         <AppSidebarGroup label="Finals Lessons" content={finalsLessons} />
       </SidebarContent>
-      <SidebarFooter />
+      <SidebarFooter>
+        <AppSidebarFooter />
+      </SidebarFooter>
     </Sidebar>
   );
 }
