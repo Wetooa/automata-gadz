@@ -6,8 +6,6 @@ import {
 } from "@/components/ui/sidebar";
 import {
   Home,
-  Inbox,
-  Calendar,
   Search,
   Settings,
   Regex,
@@ -16,6 +14,8 @@ import {
   CassetteTape,
   Workflow,
   TrendingUpDownIcon,
+  Network,
+  Layers,
 } from "lucide-react";
 import AppSidebarGroup from "./app-sidebar-group";
 
@@ -69,6 +69,17 @@ const midtermLessons: SidebarItemProps[] = [
 ];
 
 const finalsLessons: SidebarItemProps[] = [
+  {
+    title: "CFG",
+    url: "/cfg",
+    icon: Network,
+  },
+  {
+    title: "PDA",
+    url: "/pda",
+    icon: Layers,
+  },
+
   {
     title: "Turing",
     url: "/turing",
