@@ -11,6 +11,7 @@ import {
   addEdge,
   BackgroundVariant,
   MarkerType,
+  ColorMode,
 } from "@xyflow/react";
 
 import "@xyflow/react/dist/style.css";
@@ -234,7 +235,7 @@ export default function App() {
         nodeTypes={nodeTypes}
         edgeTypes={edgeTypes}
         onConnect={onConnect}
-        colorMode={theme}
+        colorMode={theme as ColorMode}
         fitView
       >
         <MiniMap zoomable pannable nodeClassName={nodeClassName} />

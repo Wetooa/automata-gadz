@@ -1,4 +1,5 @@
-import { TransitionTable, ValidationResult } from "@/types";
+import { Alphabet, TransitionTable, ValidationResult } from "@/types";
+import { isValidTextWithTransitionTable } from "./dfa";
 
 function isBalancedParenthesis(string: string) {
   let parenthesisCount = 0;
@@ -13,60 +14,78 @@ function isBalancedParenthesis(string: string) {
   return parenthesisCount === 0;
 }
 
-// NOTE: Ignore for now
-function isValidRegexWrong(regex: string): ValidationResult {
-  // FIX: THIS IS VERY WRONG, LETS USE DFA METHOD INSTEAD, WILL BE CREATING A DIAGRAM
+type RegexStates = "q0" | "q1" | "q2" | "q3";
+type BasicAlphabet = "a" | "b" | "c" | "d";
+type RegexAlphabet = BasicAlphabet | "*" | "+" | "(" | ")";
 
-  const result: ValidationResult = { isValid: true, error: [] };
+// FIX: Better if we have something like this
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+type ValidRegexString<S extends string> = S extends `${Alphabet}${infer Rest}`
+  ? Rest extends ""
+    ? S
+    : ValidRegexString<Rest>
+  : never;
 
-  if (!isBalancedParenthesis(regex)) {
-    result.isValid = false;
-    result.error.push("Expression is not a balanced paranthesis!");
-    return result;
-  }
-
-  const ignoredCharacters = new RegExp("[a-z]\(\)\ ");
-
-  for (let i = 0; i < regex.length; i++) {
-    if (regex[i] === "*") {
-      if (i === 0 || regex[i - 1] === "*" || regex[i - 2] === "+") {
-        result.isValid = false;
-        result.error.push("Invalid '*' was found!");
-        break;
-      }
-
-    } else if (regex[i] === '+') {
-      if (i === 0 || regex[i - 1] === '')
-    } else if (ignoredCharacters.test(regex[i])) {
-      // ignore the character
-    } else {
-      // NOTE: Possibly useless catch (input will not accept invalid characters)
-
-      result.isValid = false;
-      result.error.push("An invalid character was found!");
-      break;
-    }
-    i++;
-  }
-
-  return result;
-}
-
-type validRegexStates = "q0" | "q1" | "q2"
-
-export const validRegexTransitionTable : TransitionTable = {
-endStates: ["q1", "q2"],
-  transitionTable: {
-  }
-}
+export const RegexTransitionTable: TransitionTable<RegexStates, RegexAlphabet> =
+  {
+    startState: "q0",
+    endStates: ["q0", "q1"],
+    transitionTable: {
+      q0: {
+        a: "q0",
+        b: "q0",
+        c: "q0",
+        d: "q0",
+        "*": "q1",
+        "+": "q2",
+        "(": "q0",
+        ")": "q0",
+      },
+      q1: {
+        a: "q0",
+        b: "q0",
+        c: "q0",
+        d: "q0",
+        "*": "q3",
+        "+": "q1",
+        "(": "q0",
+        ")": "q0",
+      },
+      q2: {
+        a: "q0",
+        b: "q0",
+        c: "q0",
+        d: "q0",
+        "*": "q1",
+        "+": "q3",
+        "(": "q0",
+        ")": "q3",
+      },
+      q3: {
+        a: "q3",
+        b: "q3",
+        c: "q3",
+        d: "q3",
+        "*": "q3",
+        "+": "q3",
+        "(": "q3",
+        ")": "q3",
+      },
+    },
+  };
 
 export function isValidRegex(regex: string): ValidationResult {
   const result: ValidationResult = { isValid: true, error: [] };
 
   if (!isBalancedParenthesis(regex)) {
     result.isValid = false;
-    result.error.push("Expression is not a balanced paranthesis!");
-    return result;
+    result.error.push("Unbalanced parenthesis detected!");
   }
 
+  if (!isValidTextWithTransitionTable(regex, RegexTransitionTable)) {
+    result.isValid = false;
+    result.error.push("Invalid regular expression!");
+  }
+
+  return result;
 }
