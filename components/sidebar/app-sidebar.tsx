@@ -2,7 +2,13 @@ import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import {
   CassetteTape,
@@ -18,7 +24,7 @@ import {
   Workflow,
 } from "lucide-react";
 import AppSidebarFooter from "./app-sidebar-footer";
-import AppSidebarGroup from "./app-sidebar-group";
+import AppSidebarSubGroup from "./app-sidebar-group";
 
 export interface SidebarItemProps {
   title: string;
@@ -90,12 +96,35 @@ const finalsLessons: SidebarItemProps[] = [
 
 export function AppSidebar() {
   return (
-    <Sidebar variant="floating" collapsible="icon">
+    <Sidebar collapsible="offcanvas">
       <SidebarHeader />
       <SidebarContent>
-        <AppSidebarGroup label="Application" content={items} />
-        <AppSidebarGroup label="Midterm Lessons" content={midtermLessons} />
-        <AppSidebarGroup label="Finals Lessons" content={finalsLessons} />
+        <SidebarGroup>
+          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {items.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <a href={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel>Lessons</SidebarGroupLabel>
+          <AppSidebarSubGroup
+            label="Midterm Lessons"
+            content={midtermLessons}
+          />
+          <AppSidebarSubGroup label="Finals Lessons" content={finalsLessons} />
+        </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
         <AppSidebarFooter />
