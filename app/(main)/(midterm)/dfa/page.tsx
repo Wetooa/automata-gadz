@@ -71,39 +71,27 @@ function DFA() {
   );
 
   return (
-    <main className="h-full w-full">
-      {/* <SidebarTrigger className="absolute z-10" /> */}
+    <div className="w-full h-full">
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        nodeTypes={nodeTypes}
+        edgeTypes={edgeTypes}
+        onConnect={onConnect}
+        colorMode={theme as ColorMode}
+        fitView
+        className="rounded-lg"
+      >
+        <MiniMap zoomable pannable nodeClassName={nodeClassName} />
+        <Controls />
 
-      <div className="h-full w-full">
-        <ReactFlow
-          nodes={nodes}
-          edges={edges}
-          onNodesChange={onNodesChange}
-          onEdgesChange={onEdgesChange}
-          nodeTypes={nodeTypes}
-          edgeTypes={edgeTypes}
-          onConnect={onConnect}
-          colorMode={theme as ColorMode}
-          fitView
-        >
-          <MiniMap zoomable pannable nodeClassName={nodeClassName} />
-          <Controls />
+        <aside className="bg-">Sidebar ni </aside>
 
-          <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
-        </ReactFlow>
-      </div>
-    </main>
-
-    // <SidebarProvider name="dfa-sidebar" className="h-full w-full">
-    //   <Sidebar variant="floating" collapsible="icon" side="right">
-    //     <SidebarHeader />
-    //     <SidebarContent>
-    //       <SidebarGroup />
-    //       <SidebarGroup />
-    //     </SidebarContent>
-    //     <SidebarFooter />
-    //   </Sidebar>
-    // </SidebarProvider>
+        <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
+      </ReactFlow>
+    </div>
   );
 }
 

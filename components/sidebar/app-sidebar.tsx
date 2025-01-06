@@ -11,6 +11,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import {
+  BookOpen,
   CassetteTape,
   ChevronDown,
   FrownIcon,
@@ -105,13 +106,14 @@ const finalsLessons: SidebarItemProps[] = [
 
 export function AppSidebar() {
   return (
-    <Sidebar side="right" collapsible="icon">
+    <Sidebar variant="floating" side="left" collapsible="icon">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton>
+                  <BookOpen />
                   Automata Gadz
                   <ChevronDown className="ml-auto" />
                 </SidebarMenuButton>
