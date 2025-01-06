@@ -2,10 +2,19 @@ import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import {
+  BookOpen,
   CassetteTape,
+  ChevronDown,
+  FrownIcon,
   Home,
   Languages,
   Layers,
@@ -14,11 +23,18 @@ import {
   Regex,
   Search,
   Settings,
+  SmileIcon,
   TrendingUpDownIcon,
   Workflow,
 } from "lucide-react";
 import AppSidebarFooter from "./app-sidebar-footer";
-import AppSidebarGroup from "./app-sidebar-group";
+import AppSidebarSubGroup from "./app-sidebar-group";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 
 export interface SidebarItemProps {
   title: string;
@@ -90,12 +106,62 @@ const finalsLessons: SidebarItemProps[] = [
 
 export function AppSidebar() {
   return (
-    <Sidebar variant="floating" collapsible="icon">
-      <SidebarHeader />
+    <Sidebar variant="floating" side="left" collapsible="icon">
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <SidebarMenuButton>
+                  <BookOpen />
+                  Automata Gadz
+                  <ChevronDown className="ml-auto" />
+                </SidebarMenuButton>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-[--radix-popper-anchor-width]">
+                <DropdownMenuItem>
+                  <span>Acme Inc</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <span>Acme Corp.</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
       <SidebarContent>
-        <AppSidebarGroup label="Application" content={items} />
-        <AppSidebarGroup label="Midterm Lessons" content={midtermLessons} />
-        <AppSidebarGroup label="Finals Lessons" content={finalsLessons} />
+        <SidebarGroup>
+          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {items.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <a href={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel>Lessons</SidebarGroupLabel>
+          <AppSidebarSubGroup
+            groupIcon={<SmileIcon />}
+            label="Midterm Lessons"
+            content={midtermLessons}
+          />
+          <AppSidebarSubGroup
+            groupIcon={<FrownIcon />}
+            label="Finals Lessons"
+            content={finalsLessons}
+          />
+        </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
         <AppSidebarFooter />
