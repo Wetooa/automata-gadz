@@ -15,9 +15,11 @@ import {
 import { SidebarItemProps } from "./app-sidebar";
 
 export default function AppSidebarSubGroup({
+  groupIcon,
   label,
   content,
 }: {
+  groupIcon: LucideIcon;
   label: string;
   content: SidebarItemProps[];
 }) {
@@ -27,7 +29,8 @@ export default function AppSidebarSubGroup({
         <SidebarMenuItem>
           <CollapsibleTrigger asChild>
             <SidebarMenuButton>
-              {label}{" "}
+              {groupIcon}
+              {label}
               <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
             </SidebarMenuButton>
           </CollapsibleTrigger>

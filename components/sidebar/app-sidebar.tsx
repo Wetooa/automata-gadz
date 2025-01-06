@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/sidebar";
 import {
   CassetteTape,
+  ChevronDown,
+  FrownIcon,
   Home,
   Languages,
   Layers,
@@ -20,11 +22,18 @@ import {
   Regex,
   Search,
   Settings,
+  SmileIcon,
   TrendingUpDownIcon,
   Workflow,
 } from "lucide-react";
 import AppSidebarFooter from "./app-sidebar-footer";
 import AppSidebarSubGroup from "./app-sidebar-group";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 
 export interface SidebarItemProps {
   title: string;
@@ -96,8 +105,29 @@ const finalsLessons: SidebarItemProps[] = [
 
 export function AppSidebar() {
   return (
-    <Sidebar collapsible="offcanvas">
-      <SidebarHeader />
+    <Sidebar side="right" collapsible="icon">
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <SidebarMenuButton>
+                  Automata Gadz
+                  <ChevronDown className="ml-auto" />
+                </SidebarMenuButton>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-[--radix-popper-anchor-width]">
+                <DropdownMenuItem>
+                  <span>Acme Inc</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <span>Acme Corp.</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
@@ -120,10 +150,15 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupLabel>Lessons</SidebarGroupLabel>
           <AppSidebarSubGroup
+            groupIcon={<SmileIcon />}
             label="Midterm Lessons"
             content={midtermLessons}
           />
-          <AppSidebarSubGroup label="Finals Lessons" content={finalsLessons} />
+          <AppSidebarSubGroup
+            groupIcon={<FrownIcon />}
+            label="Finals Lessons"
+            content={finalsLessons}
+          />
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
